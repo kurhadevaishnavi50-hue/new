@@ -1,6 +1,5 @@
 name: Python CI
 
-    branches:
       - main
 
   pull_request:
@@ -16,8 +15,6 @@ jobs:
 
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-        with:
           python-version: "3.11"
 
       - name: Install Dependencies
@@ -25,8 +22,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Check Python Syntax
-
       - name: Start Flask App
         run: |
           timeout 10s python app.py || true
+
 
