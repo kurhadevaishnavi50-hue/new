@@ -14,6 +14,7 @@ jobs:
     
     steps:
       - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -24,6 +25,8 @@ jobs:
        
       - name: Install Dependencies
         run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Check Python Syntax
         run: python -m py_compile app.py 
@@ -31,4 +34,4 @@ jobs:
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}        
+          SONAR_TOKEN: ${{ secrets.SONAR_`TOKEN }}        
